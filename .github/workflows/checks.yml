@@ -37,20 +37,8 @@ jobs:
       - name: evals json
         run: python3 -c "import json;json.load(open('skills/numo-agent-talk/evals/evals.json'));print('evals ok')"
 
-      - name: forbidden patterns
+      - name: public safety
         run: |
-          python3 - <<'PY'
-          import pathlib, sys, re
-          bad = []
-          for p in pathlib.Path(".").rglob("*.md"):
-              if ".github" in p.parts:
-                  continue
-              for i, line in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
-                  if "\u2014" in line and "цитат" not in line:
-                      bad.append(f"{p}:{i}: long dash")
-                  if re.search(r"/Users/", line):
-                      bad.append(f"{p}:{i}: absolute home path")
-          if bad:
-              print("\n".join(bad)); sys.exit(1)
-          print("forbidden patterns ok")
-          PY
+          python3 scripts/check_public_safety.py --ci --no-names --style \
+            skills README.md SECURITY.md CONTRIBUTING.md CODE_OF_CONDUCT.md CHANGELOG.md LICENSE \
+            .claude-plugin .github
