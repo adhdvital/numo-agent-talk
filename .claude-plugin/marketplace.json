@@ -1,0 +1,13 @@
+{
+  "name": "numo-agent-talk",
+  "owner": {
+    "name": "adhdvital"
+  },
+  "plugins": [
+    {
+      "name": "numo-agent-talk",
+      "source": "./",
+      "description": "Writes and edits text in a short, clear, high-status voice. Chat replies, posts, emails, messages."
+    }
+  ]
+}

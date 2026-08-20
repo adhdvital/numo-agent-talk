@@ -1,0 +1,8 @@
+{
+  "name": "numo-agent-talk",
+  "description": "Writes and edits text in a short, clear, high-status voice. Chat replies, posts, emails, messages.",
+  "version": "0.1.0",
+  "author": {
+    "name": "adhdvital"
+  }
+}
